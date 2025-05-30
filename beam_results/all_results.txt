@@ -1,0 +1,10 @@
+1 00h:04m:18s 7.4510
+2 00h:00m:53s 7.6297
+4 00h:01m:43s 7.6252
+8 00h:03m:40s 7.6107
+16 00h:07m:37s 7.4774
+32 00h:16m:29s 7.5448
+64 00h:36m:03s 7.5415
+128 01h:33m:58s 7.4930
+256 FAILED translation_error_or_empty_output
+512 FAILED translation_error_or_empty_output

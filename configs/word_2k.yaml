@@ -1,0 +1,67 @@
+name: word_2k
+joeynmt_version: "2.0.0"
+
+data:
+  train: sampled_data/train.tok
+  dev:   sampled_data/dev.tok
+  test:  sampled_data/test.tok
+  dataset_type: plain
+  src:
+    lang: en
+    level: word
+    voc_limit: 2000
+    #tokenizer_type: "sacremoses"
+  trg:
+    lang: it
+    level: word
+    voc_limit: 2000
+    #tokenizer_type: "sacremoses"
+
+testing:
+  beam_size: 5
+  beam_alpha: 1.0 
+  # Add sacrebleu_cfg to specify tokenization for BLEU
+  sacrebleu_cfg:
+    tokenize: "none"           # Tell SacreBLEU the input is already tokenized
+
+training:
+  optimizer: adam
+  learning_rate: 0.0003
+  batch_size: 2048
+  batch_type: token
+  eval_batch_size: 1024
+  eval_batch_type: token
+  scheduling: none # change plateau to none
+  patience: 8
+  epochs: 10
+  validation_freq: 500
+  logging_freq: 100
+  eval_metrics: ["bleu", "ppl", "loss"] # CHANGE: Keep "bleu" to see it, but also add "ppl" and "loss".
+  eval_metric: "ppl"                  # CHANGE: Set "ppl" as the primary metric. 
+  early_stopping_metric: "ppl"        # FIX: Change to "ppl". This will use Perplexity for early stopping.
+  model_dir: models/word_2k
+  use_cuda: False            # set True if you have a GPU
+  overwrite: True    # # allow existing model_dir to be deleted
+  label_smoothing: 0.3
+
+model:
+  tied_embeddings: False
+  tied_softmax: True
+  encoder:
+    type: transformer
+    num_layers: 4
+    num_heads: 2
+    embeddings:
+      embedding_dim: 256
+      scale: True
+    hidden_size: 256
+    ff_size: 512
+  decoder:
+    type: transformer
+    num_layers: 1
+    num_heads: 2
+    embeddings:
+      embedding_dim: 256
+      scale: True
+    hidden_size: 256
+    ff_size: 512

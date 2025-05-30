@@ -1,0 +1,88 @@
+name: bpe_2k 
+joeynmt_version: "2.0.0" 
+
+data:
+  train: sampled_data/train.bpe2000 # for train files 
+  dev:   sampled_data/dev.bpe2000   # for dev files
+  test:  sampled_data/test.bpe2000  # for test files
+  dataset_type: plain             
+  src:
+    lang: en
+    level: bpe
+    voc_file: sampled_data/vocab2000.joint # Path to the JOINT vocabulary file
+    tokenizer_type: "subword-nmt"          # Specify subword-nmt as the tokenizer
+    tokenizer_cfg:
+      codes: "sampled_data/bpe2000.codes"  # Path to the BPE codes file
+    # max_sent_length: 100 (retain from log)
+    # lowercase: False (retain from log)
+  trg:
+    lang: it
+    level: bpe
+    voc_file: sampled_data/vocab2000.joint # Path to the JOINT vocabulary file
+    tokenizer_type: "subword-nmt"          # Specify subword-nmt as the tokenizer
+    tokenizer_cfg:
+      codes: "sampled_data/bpe2000.codes"  # Path to the BPE codes file
+    # max_sent_length: 100 (retain from log)
+    # lowercase: False (retain from log)
+  # Other data parameters like 'sample_train_subset', 'random_train_subset' not sure if needed
+
+testing:
+  beam_size: 5
+  beam_alpha: 1.0
+
+training:
+  random_seed: 42
+  optimizer: "adam"
+  normalization: "tokens"
+  learning_rate: 0.0003
+  batch_size: 2048
+  batch_type: "token"
+  eval_batch_size: 1024
+  eval_batch_type: "token"
+  scheduling: "none"
+  patience: 8
+  weight_decay: 0.0
+  eval_metric: "ppl"              # CHANGE: Set PPL as the primary metric.
+  early_stopping_metric: "ppl" # CHANGE: Use PPL for early stopping.
+  epochs: 10              
+  validation_freq: 500
+  logging_freq: 100
+  eval_metrics: ["ppl", "loss", "bleu"] # CHANGE: Keep "bleu" to SEE it, or remove it entirely.
+  model_dir: "models/bpe_2k"
+  overwrite: True
+  shuffle: True
+  use_cuda: False
+  max_output_length: 100
+  print_valid_sents: [0, 1, 2, 3, 4]
+  label_smoothing: 0.3
+
+model:
+  initializer: "xavier_uniform"
+  bias_initializer: "zeros"
+  init_gain: 1.0
+  embed_initializer: "xavier_uniform"
+  embed_init_gain: 1.0
+  tied_embeddings: True
+  tied_softmax: True
+  encoder:
+    type: "transformer"
+    num_layers: 4
+    num_heads: 2
+    embeddings:
+      embedding_dim: 256
+      scale: True
+      dropout: 0.2
+    hidden_size: 256
+    ff_size: 512
+    dropout: 0.1
+  decoder:
+    type: "transformer"
+    num_layers: 1
+    num_heads: 2
+    embeddings:
+      embedding_dim: 256
+      scale: True
+      dropout: 0.2
+    hidden_size: 256
+    ff_size: 512
+    dropout: 0.1           

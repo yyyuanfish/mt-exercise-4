@@ -1,0 +1,11 @@
+2025-05-27 21:01:06,417 - INFO - root - Hello! This is Joey-NMT (version 2.2.0).
+2025-05-27 21:01:06,776 - INFO - joeynmt.model - Building an encoder-decoder model...
+2025-05-27 21:01:06,834 - INFO - joeynmt.model - Enc-dec model built.
+/Users/liuxduan/Desktop/mt-exercise-4-master/src/joeynmt/joeynmt/helpers.py:490: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(path, map_location=device)
+2025-05-27 21:01:06,879 - INFO - joeynmt.helpers - Load model from /Users/liuxduan/Desktop/mt-exercise-4-master/models/bpe_8k/48500.ckpt.
+2025-05-27 21:01:06,892 - INFO - joeynmt.tokenizers - en tokenizer: SubwordNMTTokenizer(level=bpe, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=none, tokenizer=BPE, separator=@@, dropout=0.0)
+2025-05-27 21:01:06,892 - INFO - joeynmt.tokenizers - it tokenizer: SubwordNMTTokenizer(level=bpe, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=none, tokenizer=BPE, separator=@@, dropout=0.0)
+2025-05-27 21:01:06,895 - INFO - joeynmt.prediction - Predicting 1566 example(s)... (Beam search with beam_size=256, beam_alpha=1.0, n_best=1, min_output_length=1, max_output_length=-1, return_prob='none', generate_unk=True, repetition_penalty=-1, no_repeat_ngram_size=-1)
+/opt/miniconda3/envs/joeynmt-env/lib/python3.8/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
