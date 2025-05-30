@@ -1,5 +1,5 @@
 # MT Exercise 4: Byte Pair Encoding, Beam Search
-# Authors: Yuan Yu (19-763-291) Xiaoduan Liu (23-749-609)
+### *** Authors: Yuan Yu (19-763-291) Xiaoduan Liu (23-749-609) ****
 
 **Note** 
 Due to the large file size, we have also provided a Google Drive link to access all of our data and files.
