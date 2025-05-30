@@ -1,5 +1,5 @@
 # MT Exercise 4: Byte Pair Encoding, Beam Search
-### *** Authors: Yuan Yu (19-763-291) Xiaoduan Liu (23-749-609) ****
+***Authors: Yuan Yu (19-763-291) Xiaoduan Liu (23-749-609)***
 
 **Note** 
 Due to the large file size, we have also provided a Google Drive link to access all of our data and files.
@@ -12,7 +12,7 @@ https://drive.google.com/drive/folders/1k4fODvmoxFy0WyyzLVLsyYt9iKX5_3UE?usp=sha
 https://docs.google.com/document/d/1uHPphLe_4iqlqK5y2Ly5KOogXoxmJrQDaPN8bQ1Txew/edit?usp=sharing 
 
 3. Github link:
-https://github.com/yyyuanfish/mt-exercise-4/tree/main
+https://github.com/yyyuanfish/mt-exercise-4/
 
 
 This repository is a starting point for the 4th and final exercise. As before, fork this repo to your own account and then clone it into your preferred directory.
